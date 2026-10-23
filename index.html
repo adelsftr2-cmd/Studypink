@@ -5,471 +5,129 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#e94f9b">
 <title>StudyPink — Pengingat Belajar</title>
-<link rel="manifest" href="manifest.json">
-
 <style>
-:root{
-  --pink:#e94f9b;--pink2:#ff8ec5;--pale:#fff0f7;
-  --ink:#4a2440;--muted:#8b7183;--line:#f5d5e6;
-  --shadow:0 12px 35px #c9508d1c
-}
+:root{--pink:#e94f9b;--pink2:#ff8ec5;--pale:#fff0f7;--ink:#4a2440;--muted:#8b7183;--line:#f5d5e6;--shadow:0 12px 35px #c9508d1c}
 *{box-sizing:border-box}
-body{
-  margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;
-  background:linear-gradient(160deg,#fff7fb,#ffeaf4 55%,#fff);
-  color:var(--ink);min-height:100vh
-}
-header{
-  padding:22px 16px 30px;
-  background:linear-gradient(120deg,#e94f9b,#ff8ec5);
-  color:white;border-radius:0 0 28px 28px
-}
-.wrap{max-width:980px;margin:auto}
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{font-weight:900;font-size:1.35rem}
-.brand small{display:block;font-size:.75rem;font-weight:600;opacity:.9;letter-spacing:1px}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:linear-gradient(160deg,#fff7fb,#ffeaf4 55%,#fff);color:var(--ink);min-height:100vh}
+header{padding:22px 16px 30px;background:linear-gradient(120deg,#e94f9b,#ff8ec5);color:#fff;border-radius:0 0 28px 28px}
+.wrap{max-width:980px;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:900;font-size:1.35rem}.brand small{display:block;font-size:.75rem;font-weight:600;opacity:.9;letter-spacing:1px}
 .status{font-size:.76rem;background:#ffffff30;border:1px solid #ffffff70;border-radius:99px;padding:8px 10px}
-h1{font-size:clamp(1.55rem,5vw,2.3rem);line-height:1.12;margin:25px 0 8px}
-.hero p{margin:0;opacity:.95}
-.main{padding:18px 14px 40px}
-.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}
+h1{font-size:clamp(1.55rem,5vw,2.3rem);line-height:1.12;margin:25px 0 8px}.hero p{margin:0;opacity:.95}
+.main{padding:18px 14px 40px}.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}
 .card{background:#fff;border:1px solid #f7d7e7;border-radius:22px;padding:18px;box-shadow:var(--shadow);min-width:0}
-.card h2{font-size:1.08rem;margin:0 0 14px}
-.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
-.field{display:flex;flex-direction:column;gap:6px}
-.field.full{grid-column:1/-1}
-label{font-size:.82rem;font-weight:750}
-input,select,textarea{
-  font:inherit;color:var(--ink);background:#fffafd;
-  border:1px solid var(--line);border-radius:12px;
-  padding:12px;width:100%;min-width:0;outline-color:var(--pink)
-}
-button{font:inherit;border:0;border-radius:13px;padding:12px 15px;cursor:pointer;font-weight:800;transition:transform .15s}
-button:active{transform:scale(.98)}
-button:disabled{opacity:.55;cursor:not-allowed}
-.primary{background:var(--pink);color:#fff}
-.secondary{background:var(--pale);color:#b82e79;border:1px solid var(--line)}
-.danger{background:#fff0f0;color:#b93252}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}
-.note{font-size:.8rem;color:var(--muted);line-height:1.5;margin:12px 0 0}
-.permission{background:#fff6fb;border:1px dashed #ec9dc6;border-radius:15px;padding:13px;margin-bottom:15px}
-.permission strong{display:block;margin-bottom:4px}
+.card h2{font-size:1.08rem;margin:0 0 14px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-size:.82rem;font-weight:750}
+input,select,textarea{font:inherit;color:var(--ink);background:#fffafd;border:1px solid var(--line);border-radius:12px;padding:12px;width:100%;min-width:0;outline-color:var(--pink)}
+button{font:inherit;border:0;border-radius:13px;padding:12px 15px;cursor:pointer;font-weight:800;transition:transform .15s}button:active{transform:scale(.98)}button:disabled{opacity:.55;cursor:not-allowed}
+.primary{background:var(--pink);color:#fff}.secondary{background:var(--pale);color:#b82e79;border:1px solid var(--line)}.danger{background:#fff0f0;color:#b93252}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.note{font-size:.8rem;color:var(--muted);line-height:1.5;margin:12px 0 0}
+.permission{background:#fff6fb;border:1px dashed #ec9dc6;border-radius:15px;padding:13px;margin-bottom:15px}.permission strong{display:block;margin-bottom:4px}
 .reminder{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:16px;padding:13px;margin:10px 0}
 .emoji{background:var(--pale);width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:13px;font-size:1.3rem}
-.rbody{flex:1;min-width:0}
-.rtitle{font-weight:850;overflow-wrap:anywhere}
-.rmeta{font-size:.8rem;color:var(--muted);margin-top:4px}
-.rbuttons{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}
-.rbuttons button{font-size:.78rem;padding:8px 10px}
-.empty{text-align:center;padding:28px 8px;color:var(--muted)}
-.empty span{font-size:2.2rem;display:block;margin-bottom:7px}
-.foot{text-align:center;color:var(--muted);font-size:.78rem;padding:0 12px 28px}
-.pill{font-size:.72rem;background:#ffe2f0;color:#a72b6e;padding:4px 8px;border-radius:99px;display:inline-block;margin-top:6px}
-.hidden{display:none!important}
-#toast{margin:0 0 14px;padding:12px;border-radius:12px;background:#fff;color:var(--ink);border:1px solid var(--line);font-size:.88rem;line-height:1.5}
+.rbody{flex:1;min-width:0}.rtitle{font-weight:850;overflow-wrap:anywhere}.rmeta{font-size:.8rem;color:var(--muted);margin-top:4px}
+.rbuttons{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}.rbuttons button{font-size:.78rem;padding:8px 10px}
+.empty{text-align:center;padding:28px 8px;color:var(--muted)}.empty span{font-size:2.2rem;display:block;margin-bottom:7px}
+.foot{text-align:center;color:var(--muted);font-size:.78rem;padding:0 12px 28px}.pill{font-size:.72rem;background:#ffe2f0;color:#a72b6e;padding:4px 8px;border-radius:99px;display:inline-block;margin-top:6px}
+.hidden{display:none!important}#toast{margin:0 0 14px;padding:12px;border-radius:12px;background:#fff;color:var(--ink);border:1px solid var(--line);font-size:.88rem;line-height:1.5}
 @media(max-width:720px){.grid{grid-template-columns:1fr}.main{padding:14px 11px 30px}.card{padding:15px}.top{align-items:flex-start}.status{max-width:48%;text-align:center}}
 @media(max-width:390px){.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.brand{font-size:1.15rem}}
 </style>
-
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <div class="top">
-      <div class="brand">💗 StudyPink<small>YOUR STUDY COMPANION</small></div>
-      <div class="status" id="pushStatus">Memeriksa notifikasi…</div>
-    </div>
-    <div class="hero">
-      <h1>Belajar lebih teratur,<br>raih mimpi satu per satu ✨</h1>
-      <p>Buat jadwalmu. StudyPink akan mengingatkanmu.</p>
-    </div>
-  </div>
-</header>
-
+<header><div class="wrap">
+  <div class="top"><div class="brand">💗 StudyPink<small>YOUR STUDY COMPANION</small></div><div class="status" id="pushStatus">Memeriksa notifikasi…</div></div>
+  <div class="hero"><h1>Belajar lebih teratur,<br>raih mimpi satu per satu ✨</h1><p>Buat jadwalmu. StudyPink akan mengingatkanmu.</p></div>
+</div></header>
 <main class="main wrap">
   <div id="toast" role="status" aria-live="polite" class="hidden"></div>
-
   <div class="permission">
     <strong>🔔 Aktifkan notifikasi StudyPink</strong>
-    <p class="note" style="margin:0 0 10px">
-      Aktifkan push terlebih dahulu agar perangkat bisa menerima pengingat.
-      Jadwal juga perlu tersimpan di server.
-    </p>
-    <div class="actions" style="margin-top:0">
-      <button class="primary" id="enablePush">Aktifkan Notifikasi</button>
-      <button class="secondary" id="testPush">Tes Notifikasi</button>
-    </div>
+    <p class="note" style="margin:0 0 10px">Aktifkan push terlebih dahulu agar perangkat bisa menerima pengingat. Pengiriman terjadwal diproses oleh server.</p>
+    <div class="actions" style="margin-top:0"><button class="primary" id="enablePush">Aktifkan Notifikasi</button><button class="secondary" id="testPush">Periksa Langganan</button></div>
     <p class="note" id="pushHelp">Memeriksa konfigurasi…</p>
   </div>
-
   <div class="grid">
-    <section class="card">
-      <h2>🌷 Buat Pengingat</h2>
-      <form id="reminderForm">
-        <div class="formgrid">
-          <div class="field full">
-            <label for="title">Nama pengingat</label>
-            <input id="title" maxlength="100" placeholder="Contoh: Mengerjakan tugas Matematika" required>
-          </div>
-          <div class="field">
-            <label for="nickname">Nama panggilan</label>
-            <input id="nickname" maxlength="40" placeholder="Wawa">
-          </div>
-          <div class="field">
-            <label for="subject">Mata pelajaran</label>
-            <select id="subject">
-              <option>Matematika</option><option>Bahasa Indonesia</option>
-              <option>Bahasa Inggris</option><option>IPA</option><option>IPS</option>
-              <option>Komputer</option><option>Membaca</option><option>Lainnya</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="date">Tanggal</label>
-            <input type="date" id="date" required>
-          </div>
-          <div class="field">
-            <label for="time">Jam</label>
-            <select id="time" required></select>
-          </div>
-          <div class="field full">
-            <label for="message">Pesan notifikasi</label>
-            <textarea id="message" rows="2" maxlength="180" placeholder="Yuk, semangat belajar! 📚"></textarea>
-          </div>
-        </div>
-        <div class="actions">
-          <button class="primary" id="saveButton" type="submit">Simpan Pengingat</button>
-          <button class="secondary" type="reset">Kosongkan</button>
-        </div>
-        <p class="note">
-          Pengingat baru disimpan ke server setelah konfigurasi Supabase dan
-          langganan push perangkat berhasil. Daftar pada halaman ini tersimpan
-          di perangkat yang sedang digunakan.
-        </p>
-      </form>
+    <section class="card"><h2>🌷 Buat Pengingat</h2>
+      <form id="reminderForm"><div class="formgrid">
+        <div class="field full"><label for="title">Nama pengingat</label><input id="title" maxlength="100" placeholder="Contoh: Mengerjakan tugas Matematika" required></div>
+        <div class="field"><label for="nickname">Nama panggilan</label><input id="nickname" maxlength="40" placeholder="Nama kamu (opsional)"></div>
+        <div class="field"><label for="subject">Mata pelajaran</label><select id="subject"><option>Matematika</option><option>Bahasa Indonesia</option><option>Bahasa Inggris</option><option>IPA</option><option>IPS</option><option>Komputer</option><option>Membaca</option><option>Lainnya</option></select></div>
+        <div class="field"><label for="date">Tanggal</label><input type="date" id="date" required></div>
+        <div class="field"><label for="time">Jam</label><select id="time" required></select></div>
+        <div class="field full"><label for="message">Pesan notifikasi</label><textarea id="message" rows="2" maxlength="180" placeholder="Yuk, semangat belajar! 📚"></textarea></div>
+      </div><div class="actions"><button class="primary" id="saveButton" type="submit">Simpan Pengingat</button><button class="secondary" type="reset">Kosongkan</button></div>
+      <p class="note">Pengingat baru hanya ditandai tersimpan setelah Supabase mengonfirmasi penyimpanan. Daftar yang tersimpan lokal hanya terlihat di perangkat ini.</p></form>
     </section>
-
-    <section class="card">
-      <h2>🗓️ Jadwal Saya</h2>
-      <div class="actions" style="margin-top:0;margin-bottom:10px">
-        <button class="secondary" id="refresh">Muat ulang</button>
-        <button class="secondary" id="clearDone">Hapus yang lewat</button>
-      </div>
-      <div id="reminderList"></div>
-    </section>
+    <section class="card"><h2>🗓️ Jadwal Saya</h2><div class="actions" style="margin-top:0;margin-bottom:10px"><button class="secondary" id="refresh">Muat ulang</button><button class="secondary" id="clearDone">Hapus jadwal lokal yang lewat</button></div><div id="reminderList"></div></section>
   </div>
 </main>
 <div class="foot">Made with 💗 for your learning journey · StudyPink</div>
-
 <script>
-/* =========================================================
-   ISI 2 NILAI SUPABASE DI BAWAH INI.
-   Jangan masukkan SERVICE ROLE KEY atau REST API KEY OneSignal.
-   ========================================================= */
-const CONFIG = {
-  ONESIGNAL_APP_ID: "29195544-3eb9-4227-947c-b63ac18aecee",
-  SUPABASE_URL: "ISI_PROJECT_URL_SUPABASE",
-  SUPABASE_ANON_KEY: "ISI_PUBLISHABLE_ATAU_ANON_KEY"
+/* Isi PUBLIC KEY Supabase di bawah ini. Jangan pernah taruh service_role/secret key di HTML. */
+const CONFIG={
+  ONESIGNAL_APP_ID:"29195544-3eb9-4227-947c-b63ac18aecee",
+  SUPABASE_URL:"https://dxtzfwuqwkdwqmhwokwp.supabase.co",
+  SUPABASE_ANON_KEY:"sb_publishable_opUmhR9k-fZtB75Ni-o36g_jQ7rvr_4"
 };
-
-const STORAGE_KEY = "studypink_reminders_v2";
-const $ = id => document.getElementById(id);
-let oneSignalReady = false;
-let pushSubscriptionId = null;
-let oneSignalObject = null;
-
-function showMessage(message, error=false) {
-  const box = $("toast");
-  box.textContent = message;
-  box.classList.remove("hidden");
-  box.style.borderColor = error ? "#e99aaa" : "#f5d5e6";
-  box.style.background = error ? "#fff0f0" : "#fff";
-}
-function hideMessage() { $("toast").classList.add("hidden"); }
-
-function localISODate(d=new Date()) {
-  const off=d.getTimezoneOffset();
-  return new Date(d.getTime()-off*60000).toISOString().slice(0,10);
-}
-$("date").min=localISODate();
-$("date").value=localISODate();
-
-for(let h=0;h<24;h++) {
-  for(const m of [0,15,30,45]) {
-    const v=String(h).padStart(2,"0")+":"+String(m).padStart(2,"0");
-    const o=document.createElement("option");
-    o.value=v;o.textContent=v;$("time").appendChild(o);
-  }
-}
+const STORAGE_KEY="studypink_reminders_v3";
+const $=id=>document.getElementById(id);
+let oneSignalReady=false,oneSignalObject=null,pushSubscriptionId=null;
+function showMessage(message,error=false){const box=$("toast");box.textContent=message;box.classList.remove("hidden");box.style.borderColor=error?"#e99aaa":"#f5d5e6";box.style.background=error?"#fff0f0":"#fff"}
+function hideMessage(){$("toast").classList.add("hidden")}
+function localISODate(d=new Date()){const off=d.getTimezoneOffset();return new Date(d.getTime()-off*60000).toISOString().slice(0,10)}
+$("date").min=localISODate();$("date").value=localISODate();
+for(let h=0;h<24;h++)for(const m of [0,15,30,45]){const v=String(h).padStart(2,"0")+":"+String(m).padStart(2,"0");const o=document.createElement("option");o.value=v;o.textContent=v;$("time").appendChild(o)}
 $("time").value="19:00";
-
-function getItems() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]"); }
-  catch { return []; }
+function getItems(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]")}catch{return []}}
+function saveItems(items){localStorage.setItem(STORAGE_KEY,JSON.stringify(items))}
+function escapeHTML(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function isConfigured(){return CONFIG.SUPABASE_URL.startsWith("https://")&&!CONFIG.SUPABASE_URL.includes("ISI_")&&CONFIG.SUPABASE_ANON_KEY&&CONFIG.SUPABASE_ANON_KEY!=="TEMPEL_PUBLISHABLE_ATAU_ANON_KEY_DI_SINI"&&!CONFIG.SUPABASE_ANON_KEY.startsWith("ISI_")}
+function headers(extra={}){return {"apikey":CONFIG.SUPABASE_ANON_KEY,"Authorization":"Bearer "+CONFIG.SUPABASE_ANON_KEY,"Content-Type":"application/json",...extra}}
+function reminderISO(item){return new Date(item.date+"T"+item.time+":00").toISOString()}
+async function getSubscriptionId(){
+ if(!oneSignalReady||!oneSignalObject)throw new Error("OneSignal belum siap. Buka situs melalui HTTPS, lalu muat ulang.");
+ try{await oneSignalObject.User.PushSubscription.optIn();let id=oneSignalObject.User.PushSubscription.id;if(!id){await new Promise(r=>setTimeout(r,1500));id=oneSignalObject.User.PushSubscription.id}if(!id)throw new Error("ID langganan push belum tersedia. Aktifkan izin notifikasi dahulu.");pushSubscriptionId=id;return id}catch(e){throw new Error(e.message||"Gagal mengaktifkan langganan OneSignal.")}
 }
-function saveItems(items) {
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(items));
+async function saveToServer(item){
+ if(!isConfigured())throw new Error("Public key Supabase belum diisi. Isi SUPABASE_ANON_KEY di index.html.");
+ const subscription_id=await getSubscriptionId();
+ const payload={title:item.title,message:item.message,remind_at:reminderISO(item),subscription_id};
+ const res=await fetch(CONFIG.SUPABASE_URL.replace(/\/+$/,"")+"/rest/v1/study_reminders",{method:"POST",headers:headers({"Prefer":"return=representation"}),body:JSON.stringify(payload)});
+ const body=await res.text();
+ if(!res.ok)throw new Error("Supabase menolak penyimpanan ("+res.status+"): "+body);
+ let rows=[];try{rows=body?JSON.parse(body):[]}catch{}return rows[0]||null;
 }
-function escapeHTML(s) {
-  return String(s??"").replace(/[&<>"']/g,c=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  }[c]));
+function render(){
+ const items=getItems().sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));const box=$("reminderList");
+ if(!items.length){box.innerHTML='<div class="empty"><span>🌸</span>Belum ada pengingat.<br>Yuk, buat jadwal pertamamu!</div>';return}
+ box.innerHTML=items.map(r=>{const passed=new Date(r.date+"T"+r.time+":00")<new Date();return `<div class="reminder"><div class="emoji">📚</div><div class="rbody"><div class="rtitle">${escapeHTML(r.title)}</div><div class="rmeta">📅 ${escapeHTML(r.date)} · ⏰ ${escapeHTML(r.time)}<br>📘 ${escapeHTML(r.subject)}${r.nickname?' · '+escapeHTML(r.nickname):''}</div><span class="pill">${passed?'Waktu lewat':'Terjadwal'} · ${r.synced?'Tersimpan di server':'Lokal saja'}</span><div class="rbuttons"><button class="secondary" data-edit="${escapeHTML(r.id)}">Edit</button><button class="danger" data-delete="${escapeHTML(r.id)}">Hapus</button></div></div></div>`}).join("");
+ box.querySelectorAll("[data-delete]").forEach(b=>b.onclick=()=>{const r=getItems().find(x=>x.id===b.dataset.delete);if(r?.synced){alert("Jadwal ini sudah masuk server. Menghapus dari daftar lokal tidak membatalkan push server. Batalkan jadwal server melalui backend.");return}saveItems(getItems().filter(x=>x.id!==b.dataset.delete));render()});
+ box.querySelectorAll("[data-edit]").forEach(b=>b.onclick=()=>{const r=getItems().find(x=>x.id===b.dataset.edit);if(!r)return;if(r.synced){alert("Jadwal yang sudah tersimpan di server belum bisa diedit dari halaman ini.");return}$("title").value=r.title;$("nickname").value=r.nickname||"";$("subject").value=r.subject;$("date").value=r.date;$("time").value=r.time;$("message").value=r.message||"";saveItems(getItems().filter(x=>x.id!==r.id));render();window.scrollTo({top:0,behavior:"smooth"})});
 }
-function isConfigured() {
-  return CONFIG.ONESIGNAL_APP_ID &&
-    !CONFIG.ONESIGNAL_APP_ID.startsWith("ISI_") &&
-    CONFIG.SUPABASE_URL.startsWith("https://") &&
-    !CONFIG.SUPABASE_URL.includes("ISI_") &&
-    CONFIG.SUPABASE_ANON_KEY &&
-    !CONFIG.SUPABASE_ANON_KEY.startsWith("ISI_");
-}
-function supabaseHeaders(extra={}) {
-  return {
-    "apikey": CONFIG.SUPABASE_ANON_KEY,
-    "Authorization": "Bearer "+CONFIG.SUPABASE_ANON_KEY,
-    "Content-Type": "application/json",
-    ...extra
-  };
-}
-function reminderISO(item) {
-  // Jam dari form diperlakukan sebagai waktu lokal perangkat.
-  return new Date(item.date+"T"+item.time+":00").toISOString();
-}
-
-async function getSubscriptionId() {
-  if(!oneSignalReady || !oneSignalObject) {
-    throw new Error("OneSignal belum siap. Muat ulang halaman dan coba lagi.");
-  }
-  try {
-    await oneSignalObject.User.PushSubscription.optIn();
-    let id=oneSignalObject.User.PushSubscription.id;
-    if(!id) {
-      await new Promise(resolve=>setTimeout(resolve,1200));
-      id=oneSignalObject.User.PushSubscription.id;
-    }
-    if(!id) throw new Error("ID langganan push belum tersedia. Pastikan izin notifikasi sudah diberikan.");
-    pushSubscriptionId=id;
-    return id;
-  } catch(err) {
-    throw new Error(err.message || "Gagal mengaktifkan langganan OneSignal.");
-  }
-}
-
-async function saveToServer(item) {
-  if(!isConfigured()) {
-    throw new Error("Konfigurasi belum lengkap. Isi SUPABASE_URL dan SUPABASE_ANON_KEY di index.html.");
-  }
-  const subscriptionId=await getSubscriptionId();
-  const payload={
-    title:item.title,
-    message:item.message,
-    remind_at:reminderISO(item),
-    subscription_id:subscriptionId
-  };
-  const response=await fetch(
-    CONFIG.SUPABASE_URL.replace(/\/+$/,"")+"/rest/v1/study_reminders",
-    {
-      method:"POST",
-      headers:supabaseHeaders({"Prefer":"return=representation"}),
-      body:JSON.stringify(payload)
-    }
-  );
-  const body=await response.text();
-  if(!response.ok) {
-    throw new Error("Supabase menolak penyimpanan ("+response.status+"): "+body);
-  }
-  let rows=[];
-  try { rows=body?JSON.parse(body):[]; } catch {}
-  return rows[0] || null;
-}
-
-function render() {
-  const items=getItems().sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
-  const box=$("reminderList");
-  if(!items.length) {
-    box.innerHTML='<div class="empty"><span>🌸</span>Belum ada pengingat.<br>Yuk, buat jadwal pertamamu!</div>';
-    return;
-  }
-  box.innerHTML=items.map(r=>{
-    const passed=new Date(r.date+"T"+r.time+":00")<new Date();
-    return `<div class="reminder">
-      <div class="emoji">📚</div>
-      <div class="rbody">
-        <div class="rtitle">${escapeHTML(r.title)}</div>
-        <div class="rmeta">📅 ${escapeHTML(r.date)} · ⏰ ${escapeHTML(r.time)}
-        <br>📘 ${escapeHTML(r.subject)}${r.nickname?' · untuk '+escapeHTML(r.nickname):''}</div>
-        <span class="pill">${passed?'Waktu lewat':'Terjadwal'} · ${r.synced?'Tersimpan di server':'Lokal saja'}</span>
-        <div class="rbuttons">
-          <button class="secondary" data-edit="${escapeHTML(r.id)}">Edit</button>
-          <button class="danger" data-delete="${escapeHTML(r.id)}">Hapus</button>
-        </div>
-      </div>
-    </div>`;
-  }).join("");
-
-  box.querySelectorAll("[data-delete]").forEach(b=>b.onclick=()=>{
-    const r=getItems().find(x=>x.id===b.dataset.delete);
-    if(r?.synced) {
-      alert("Pengingat ini sudah tersimpan di server. Menghapusnya dari daftar perangkat tidak membatalkan jadwal di server. Untuk membatalkannya dengan aman, perlu fitur pembatalan server.");
-      return;
-    }
-    saveItems(getItems().filter(x=>x.id!==b.dataset.delete));
-    render();
-  });
-
-  box.querySelectorAll("[data-edit]").forEach(b=>b.onclick=()=>{
-    const r=getItems().find(x=>x.id===b.dataset.edit);
-    if(!r)return;
-    if(r.synced) {
-      alert("Pengingat yang sudah tersimpan di server belum dapat diedit dari halaman ini. Buat pengingat baru atau batalkan melalui fitur server.");
-      return;
-    }
-    $("title").value=r.title;
-    $("nickname").value=r.nickname||"";
-    $("subject").value=r.subject;
-    $("date").value=r.date;
-    $("time").value=r.time;
-    $("message").value=r.message||"";
-    saveItems(getItems().filter(x=>x.id!==r.id));
-    render();
-    window.scrollTo({top:0,behavior:"smooth"});
-  });
-}
-
 $("reminderForm").addEventListener("submit",async e=>{
-  e.preventDefault();
-  hideMessage();
-
-  const item={
-    id:(crypto.randomUUID?crypto.randomUUID():String(Date.now())),
-    title:$("title").value.trim(),
-    nickname:$("nickname").value.trim(),
-    subject:$("subject").value,
-    date:$("date").value,
-    time:$("time").value,
-    message:$("message").value.trim()||"Yuk, semangat belajar! 📚",
-    created_at:new Date().toISOString(),
-    synced:false
-  };
-
-  if(!item.title) {
-    showMessage("Nama pengingat wajib diisi.",true);return;
-  }
-  if(new Date(item.date+"T"+item.time+":00")<=new Date()) {
-    showMessage("Pilih tanggal dan waktu yang masih akan datang ya 💗",true);return;
-  }
-
-  const btn=$("saveButton");
-  btn.disabled=true;
-  btn.textContent="Menyimpan…";
-
-  try {
-    // Jangan menyatakan sukses sebelum data berhasil tersimpan di Supabase.
-    const serverRow=await saveToServer(item);
-    item.synced=true;
-    item.serverId=serverRow?.id ?? null;
-    const items=getItems();
-    items.push(item);
-    saveItems(items);
-    render();
-    showMessage("Berhasil! Pengingat tersimpan di Supabase dan terhubung ke langganan push perangkat. 💗");
-    e.target.reset();
-    $("date").min=localISODate();
-    $("date").value=localISODate();
-    $("time").value="19:00";
-  } catch(err) {
-    console.error(err);
-    showMessage("Pengingat belum tersimpan ke server. "+err.message,true);
-  } finally {
-    btn.disabled=false;
-    btn.textContent="Simpan Pengingat";
-  }
+ e.preventDefault();hideMessage();const item={id:(crypto.randomUUID?crypto.randomUUID():String(Date.now())),title:$("title").value.trim(),nickname:$("nickname").value.trim(),subject:$("subject").value,date:$("date").value,time:$("time").value,message:$("message").value.trim()||"Yuk, semangat belajar! 📚",created_at:new Date().toISOString(),synced:false};
+ if(!item.title){showMessage("Nama pengingat wajib diisi.",true);return}
+ if(new Date(item.date+"T"+item.time+":00")<=new Date()){showMessage("Pilih tanggal dan jam yang masih akan datang ya 💗",true);return}
+ const btn=$("saveButton");btn.disabled=true;btn.textContent="Menyimpan…";
+ try{const serverRow=await saveToServer(item);item.synced=true;item.serverId=serverRow?.id??null;const items=getItems();items.push(item);saveItems(items);render();showMessage("Berhasil! Pengingat sudah tersimpan di Supabase. Pastikan Cron dan Edge Function aktif untuk mengirim push.");e.target.reset();$("date").min=localISODate();$("date").value=localISODate();$("time").value="19:00"}
+ catch(err){console.error(err);showMessage("Pengingat belum tersimpan ke server. "+err.message,true)}
+ finally{btn.disabled=false;btn.textContent="Simpan Pengingat"}
 });
-
-$("refresh").onclick=()=>{render();showMessage("Daftar lokal diperbarui.");};
-
-$("clearDone").onclick=()=>{
-  const old=getItems();
-  const keep=old.filter(r=>new Date(r.date+"T"+r.time+":00")>=new Date());
-  if(old.some(r=>r.synced && !keep.includes(r))) {
-    alert("Sebagian pengingat lewat sudah tersimpan di server. Menghapusnya di sini tidak membatalkan pengiriman server. Pengingat server perlu dibatalkan melalui fungsi backend.");
-  }
-  saveItems(keep.filter(r=>!r.synced));
-  render();
-};
-
-$("enablePush").onclick=async()=>{
-  hideMessage();
-  if(!isConfigured()) {
-    showMessage("Isi SUPABASE_URL dan SUPABASE_ANON_KEY di konfigurasi HTML terlebih dahulu.",true);
-    return;
-  }
-  if(!oneSignalReady) {
-    showMessage("OneSignal belum siap. Pastikan situs menggunakan HTTPS, lalu muat ulang halaman.",true);
-    return;
-  }
-  try {
-    await oneSignalObject.Notifications.requestPermission();
-    await oneSignalObject.User.PushSubscription.optIn();
-    const id=await getSubscriptionId();
-    $("pushStatus").textContent="Langganan push siap";
-    showMessage("Perangkat terhubung ke OneSignal. Sekarang kamu bisa menyimpan pengingat. ID langganan tersedia.");
-    console.log("OneSignal subscription is ready:",Boolean(id));
-  } catch(err) {
-    showMessage(err.message||"Gagal mengaktifkan notifikasi. Periksa izin browser.",true);
-  }
-};
-
-$("testPush").onclick=async()=>{
-  if(!oneSignalReady) {
-    showMessage("OneSignal belum siap. Aktifkan notifikasi terlebih dahulu.",true);
-    return;
-  }
-  try {
-    const id=await getSubscriptionId();
-    showMessage("Langganan push tersedia. Tes ini memeriksa langganan saja; pengiriman push server tetap perlu diuji dari OneSignal.");
-    console.log("OneSignal subscription is ready:",Boolean(id));
-  } catch(err) {
-    showMessage(err.message,true);
-  }
-};
-
-async function initOneSignal() {
-  if(!CONFIG.ONESIGNAL_APP_ID || CONFIG.ONESIGNAL_APP_ID.startsWith("ISI_")) {
-    $("pushStatus").textContent="Perlu konfigurasi push";
-    $("pushHelp").textContent="Periksa OneSignal App ID.";
-    return;
-  }
-  window.OneSignalDeferred=window.OneSignalDeferred||[];
-  window.OneSignalDeferred.push(async function(OneSignal) {
-    try {
-      await OneSignal.init({
-        appId:CONFIG.ONESIGNAL_APP_ID,
-        allowLocalhostAsSecureOrigin:true
-      });
-      oneSignalObject=OneSignal;
-      oneSignalReady=true;
-      const optedIn=OneSignal.User.PushSubscription.optedIn;
-      $("pushStatus").textContent=optedIn?"Push sudah aktif":"Push belum aktif";
-      $("pushHelp").textContent=optedIn
-        ?"Perangkat memiliki langganan push. Simpan pengingat untuk menghubungkannya ke jadwal server."
-        :"Tekan Aktifkan Notifikasi dan izinkan permintaan notifikasi browser.";
-    } catch(err) {
-      console.error(err);
-      $("pushStatus").textContent="Push bermasalah";
-      $("pushHelp").textContent="Gagal memulai OneSignal. Periksa App ID, domain situs, dan konfigurasi OneSignal.";
-    }
-  });
+$("refresh").onclick=()=>{render();showMessage("Daftar lokal diperbarui.")};
+$("clearDone").onclick=()=>{const old=getItems();if(old.some(r=>r.synced&&new Date(r.date+"T"+r.time+":00")<new Date())){alert("Jadwal yang sudah tersimpan di server tidak dibatalkan dengan tombol ini. Ini hanya membersihkan jadwal lokal yang belum tersinkron.");}saveItems(old.filter(r=>r.synced||new Date(r.date+"T"+r.time+":00")>=new Date()));render()};
+$("enablePush").onclick=async()=>{hideMessage();if(!isConfigured()){showMessage("Isi Public Key Supabase terlebih dahulu di index.html.",true);return}if(!oneSignalReady){showMessage("OneSignal belum siap. Pastikan domain GitHub Pages terdaftar di OneSignal dan muat ulang.",true);return}try{await oneSignalObject.Notifications.requestPermission();const id=await getSubscriptionId();$("pushStatus").textContent="Langganan push siap";showMessage("Langganan push perangkat siap. Sekarang coba simpan pengingat.");console.log("Subscription ready:",Boolean(id))}catch(e){showMessage(e.message,true)}};
+$("testPush").onclick=async()=>{try{const id=await getSubscriptionId();showMessage("Langganan push terdeteksi. Tombol ini tidak mengirim push percobaan; pengiriman server perlu diuji melalui OneSignal/Edge Function.");console.log("Subscription ready:",Boolean(id))}catch(e){showMessage(e.message,true)}};
+function initOneSignal(){
+ if(!CONFIG.ONESIGNAL_APP_ID){$("pushStatus").textContent="Perlu konfigurasi push";return}
+ window.OneSignalDeferred=window.OneSignalDeferred||[];
+ window.OneSignalDeferred.push(async function(OneSignal){try{await OneSignal.init({appId:CONFIG.ONESIGNAL_APP_ID,allowLocalhostAsSecureOrigin:true});oneSignalObject=OneSignal;oneSignalReady=true;const optedIn=OneSignal.User.PushSubscription.optedIn;$("pushStatus").textContent=optedIn?"Push sudah aktif":"Push belum aktif";$("pushHelp").textContent=optedIn?"Langganan push terdeteksi. Simpan pengingat untuk menghubungkannya ke server.":"Tekan Aktifkan Notifikasi dan izinkan permintaan browser."}catch(e){console.error(e);$("pushStatus").textContent="Push bermasalah";$("pushHelp").textContent="Periksa App ID, domain situs di OneSignal, dan file OneSignalSDKWorker.js."}});
 }
-
-if(!("Notification" in window)) {
-  $("pushHelp").textContent="Browser ini tidak mendukung Web Notifications. Coba Chrome terbaru.";
-} else if(location.protocol!=="https:" && location.hostname!=="localhost") {
-  $("pushHelp").textContent="Buka situs melalui HTTPS, misalnya GitHub Pages.";
-}
-
-initOneSignal();
-render();
+if(!("Notification" in window))$("pushHelp").textContent="Browser ini tidak mendukung notifikasi web. Coba Chrome terbaru.";
+else if(location.protocol!=="https:"&&location.hostname!=="localhost")$("pushHelp").textContent="Buka situs lewat HTTPS, misalnya GitHub Pages.";
+if(!isConfigured())$("pushHelp").textContent="OneSignal App ID sudah diisi. Public Key Supabase masih perlu ditempel pada konfigurasi index.html.";
+initOneSignal();render();
 </script>
 </body>
 </html>
